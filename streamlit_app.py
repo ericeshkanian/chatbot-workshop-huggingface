@@ -79,7 +79,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         response_stream = ""
         try:
             response_stream = st.session_state.chat_engine.stream_chat(prompt)
-        except:
+        except Exception as e:
             st.error("We got an error from Hugging Face - this can happen for a few different reasons. Consider asking the question in a different way. " + str(e)")        
         if response_stream != "":
             with st.spinner("waiting"):
