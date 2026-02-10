@@ -4,7 +4,7 @@ import time
 import streamlit as st
 from llama_index.llms.gemini import Gemini
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
-from llama_index.embeddings.gemini import GeminiEmbedding
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 from llama_index.embeddings.google_genai import GoogleGenAIEmbedding
 from google.genai.types import EmbedContentConfig
@@ -35,10 +35,10 @@ def load_data():
 
     Settings.chunk_size = 1500
     Settings.chunk_overlap = 50
-    Settings.embed_model = GoogleGenAIEmbedding(
-    model_name="gemini-embedding-001",
+    Settings.embed_model = HuggingFaceEmbedding(
+    model_name="BAAI/bge-small-en-v1.5"
     embed_batch_size=20,
-    api_key=st.secrets.google_gemini_key,
+    token=st.secrets.hftoken,
     )
 
     
