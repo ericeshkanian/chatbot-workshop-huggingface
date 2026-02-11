@@ -42,7 +42,7 @@ def load_data():
     Settings.llm = HuggingFaceInferenceAPI(
     model_name="Qwen/Qwen2.5-1.5B-Instruct",
     token=st.secrets.hftoken,
-    generate_kwargs={"temperature": 0.1, "top_k": 50, "top_p": 0.95},
+    generate_kwargs={"temperature": 0.01, "top_k": 50, "top_p": 0.95},
     provider="auto",  # this will use the best provider available
     system_prompt="""You are an expert on the postal mail received by the SJSU Research Foundation.
     Answer the question using the provided documents in a succinct manner. Include the first and last name of the person the mail should go to.
